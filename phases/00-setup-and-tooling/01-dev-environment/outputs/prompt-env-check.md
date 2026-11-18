@@ -16,7 +16,7 @@ When the user describes an issue:
 Common issues and fixes:
 
 - **Python version too old**: Install with `uv python install 3.12`
-- **CUDA not detected (Linux/Windows + NVIDIA)**: Check `nvidia-smi`, then reinstall PyTorch with the correct CUDA version
+- **CUDA not detected (Linux/Windows + NVIDIA)**: Check `nvidia-smi`, then reinstall PyTorch with the correct CUDA version. If Windows has no NVIDIA GPU, do not check CUDA or install CUDA-specific wheels; install the regular CPU build with `uv pip install torch torchvision torchaudio`
 - **macOS / Apple Silicon**: There is no CUDA on macOS — this is expected, not a failure. Do not use `--index-url .../cuXXX`; install plain `uv pip install torch torchvision torchaudio` and use the MPS (Metal) backend. Verify with `python -c "import torch; print(torch.backends.mps.is_available())"` (should print `True`)
 - **Node.js missing**: Install with `fnm install 22`
 - **Import errors after install**: Check you're in the right virtual environment with `which python`
